@@ -146,7 +146,7 @@
 	            if (status === google.maps.places.PlacesServiceStatus.OK) {
 	                var _loop = function _loop(_i) {
 	                    var breweryExtras = breweryRecommendations.find(function (b) {
-	                        return b.placeId.includes(baseBreweryInfo[_i].place_id);
+	                        return b.placeId.indexOf(baseBreweryInfo[_i].place_id) != -1;
 	                    });
 	
 	                    if (breweryExtras) {

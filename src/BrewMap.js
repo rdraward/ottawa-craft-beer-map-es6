@@ -55,7 +55,7 @@ export default class BrewMap {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (let i = 0; i < baseBreweryInfo.length; i++) {
                 const breweryExtras = breweryRecommendations.find(
-                    b => b.placeId.includes(baseBreweryInfo[i].place_id)
+                    b => b.placeId.indexOf(baseBreweryInfo[i].place_id) != -1
                 );
 
                 if (breweryExtras) {
