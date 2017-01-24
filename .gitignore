@@ -1,0 +1,3 @@
+# only need bundled file
+src/
+node_modules/
