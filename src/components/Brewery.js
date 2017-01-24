@@ -22,10 +22,6 @@ export default class Brewery {
         return new Marker(info.geometry.location, icon);
     }
 
-    createInfoBox(info, recommendation) {
-        return new InfoBox(info, recommendation);
-    }
-
     bindBreweryAndInfoBox() {
         this.brewery.marker.addListener('click', () => {
             if (!this.infoboxContents) {
@@ -42,7 +38,7 @@ export default class Brewery {
         }, (place, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 this.info = place;
-                this.infoboxContents = formatDetails(this.info, this.recommendation);
+                this.infoboxContents = formatDetails(this.info, this.extraInfo.recommendation);
                 drawInfobox(this.infoboxContents, this.brewery.marker);
             }
         });

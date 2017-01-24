@@ -407,11 +407,6 @@
 	            return new _Marker2.default(info.geometry.location, icon);
 	        }
 	    }, {
-	        key: 'createInfoBox',
-	        value: function createInfoBox(info, recommendation) {
-	            return new InfoBox(info, recommendation);
-	        }
-	    }, {
 	        key: 'bindBreweryAndInfoBox',
 	        value: function bindBreweryAndInfoBox() {
 	            var _this = this;
@@ -434,7 +429,7 @@
 	            }, function (place, status) {
 	                if (status === google.maps.places.PlacesServiceStatus.OK) {
 	                    _this2.info = place;
-	                    _this2.infoboxContents = (0, _infoBox.formatDetails)(_this2.info, _this2.recommendation);
+	                    _this2.infoboxContents = (0, _infoBox.formatDetails)(_this2.info, _this2.extraInfo.recommendation);
 	                    (0, _infoBox.drawInfobox)(_this2.infoboxContents, _this2.brewery.marker);
 	                }
 	            });
