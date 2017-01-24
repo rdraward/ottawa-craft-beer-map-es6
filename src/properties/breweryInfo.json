@@ -1,0 +1,166 @@
+var breweryRecommendations = [
+	{
+		"placeId": ["ChIJNfCbgqoJ0kwRO8OMJC2fu3M"],
+		"name": "The Old Mill at Ashton",
+		"icon": "ashton.png",
+		"recommendation": "Vanilla Stout ; ABV 5.5% - IBU 70 ;  Ashton Brewing Company: I'm a sucker for a good vanilla stout and Ashton makes one of the best in the city."
+	},
+	{
+		"placeId": [],
+		"name": "Beaus All Natural Brewery",
+		"icon": "beaus.png",
+		"recommendation": "Haters Gonna Hate Imperial Kölsch ; ABV 8% - IBU 40 ; Will satisfy everyone's inner hipster."
+	},
+	{
+		"placeId": ["ChIJzZXd7j0EzkwRsoRqRb7fJCU"],
+		"name": "Beyond the Pale Brewing Company",
+		"icon": "beyondthepale.png",
+		"recommendation": "Rye Guy IPA ; ABV 6.7% - IBU 52 ; Weekend suggestion: Have a couple of these and stanky legg at the Lieutenant's Pump."
+	},
+	{
+		"placeId": ["ChIJy1ccMnIPzkwRoO65LDwdCOg"],
+		"name": "Bicycle Craft Brewery",
+		"icon": "bicycle.png",
+		"recommendation": "Juan Almonte Jalapeno Pale Ale ; ABV 5.2% - IBU 32 ; Sounds really weird but one of the best tasting beers I've had in Ottawa. RULE: Whoever gets the jalapeno pepper has to drink it."
+	},
+	{
+		"placeId": ["ChIJSZJTafr_0UwRfbYNkFxpoAE"],
+		"name": "Big Rig Brewery",
+		"icon": "bigrig.png",
+		"recommendation": "Release the Hounds Black IPA ; ABV 6.2% - IBU 72 ; I usually prefer a standard IPA but at Big Rig once you go black you won't want to go back.",
+		"brewpub": true
+	},
+	{
+		"placeId": ["ChIJJx1unNIAzkwRwL9u_gXdjnU", "ChIJeebt8sAPzkwR9BOgNWiwRPA"],
+		"name": "Big Rig Kitchen and Brewery",
+		"icon": "bigrig.png",
+		"recommendation": "Release the Hounds Black IPA ; ABV 6.2% - IBU 72 ; I usually prefer a standard IPA but at Big Rig once you go black you won't want to go back.",
+		"brewpub": true
+	},
+	{
+		"placeId": ["ChIJ95drtBV4zkwRA2ph_pXQxnU"],
+		"name": "Brasserie Étienne Brûlé Brewery",
+		"icon": "etiennebrule.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJb_d3_sEHzkwRScu8-Y6igow"],
+		"name": "Broadhead Brewing Company",
+		"icon": "broadhead.png",
+		"recommendation": "Grindstone Amber Ale ; ABV 5% - IBU 25 ; Good standard amber ale - conveniently close to my workplace.  Now I just need to see about lifting the 'No beers in the office' rule."
+	},
+	{
+		"placeId": ["ChIJEzZfDTEQzkwRTkC_7bo2uo4"],
+		"name": "Broken Stick Brewing Company",
+		"icon": "brokenstick.png",
+		"recommendation": "Lawnmower Lulu ; ABV 5.3% - IBU 33 ; Nice citrus wheat beer - perfect for the exceptionally long and hot summer."
+	},
+	{
+		"placeId": [],
+		"name": "Cassel Brewery Co.",
+		"icon": "cassel.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJUT1qf_0EzkwRY99RhiEs_8g", "ChIJw0YfIaoGzkwRhmVDMAZO5ZY", "ChIJRzBUhiIFzkwRkeAZMOJQrn8"],
+		"name": "Clocktower Brew Pub",
+		"icon": "clocktower.png",
+		"recommendation": null,
+		"brewpub": true
+	},
+	{
+		"placeId": ["ChIJDQRqEqMFzkwRqUqDgUweYj4"],
+		"name": "Clocktower Brew Pub Glebe",
+		"icon": "clocktower.png",
+		"recommendation": null,
+		"brewpub": true
+	},
+	{
+		"placeId": ["ChIJxxlw9mn_zUwRlt4MCG9GrCg"],
+		"name": "Covered Bridge Brewing",
+		"icon": "coveredbridge.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJU3SVOTAQzkwRfOC9aKfdWB0"],
+		"name": "Dominion City Brewing Co.",
+		"icon": "dominion.png",
+		"recommendation": "Land Is Strong Wet-Hopped Belgian IPA ; ABV 8% - IBU 92 ; Drank the better part of a growler and went to see The Martian in 3D.  Thought I was going to be sick but held it together. Matt Damon is an American hero. 10/10, would do again."
+	},
+	{
+		"placeId": ["ChIJLzcy5x3-zUwR2M9oJlmJGCg"],
+		"name": "Evergreen Craft Ales",
+		"icon": "evergreen.png",
+		"recommendation": null
+	},
+	{
+		"placeId": [],
+		"name": "Hoptail Brewery",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJf3n3nr4GzkwRD0hZeutW9yw"],
+		"name": "Kichesippi Beer",
+		"icon": "kichesippi.png",
+		"recommendation": "Also check out Harvey & Vern's sodas sold out of the brewery.  Excellent Root Beer and Ginger Beer.;;"
+	},
+	{
+		"placeId": ["ChIJwWZVGIkEzkwRq0gzJUop-G8"],
+		"name": "Les Brasseurs du Temps",
+		"icon": "bdt.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJD8-regIFzkwR7QMfOOW8Hwo"],
+		"name": "Lowertown Brewery",
+		"icon": "lowertown.png",
+		"recommendation": "Pale Ale ; ABV 5.2% - IBU 37 ; I'm not a pale ale guy, but this one is actually delish.  Lowertown also has flights that are really well priced and let you try all 6 of their beers."
+	},
+	{
+		"placeId": ["ChIJn4MvQ1AEzkwRdo2vuno6UQA"],
+		"name": "Mill St. Brew Pub",
+		"icon": "millst.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJ3cLUzrYHzkwReNDGjZL4Dho"],
+		"name": "Nita Beer Company",
+		"icon": "nita.png",
+		"recommendation": null
+	},
+	{
+		"placeId": [],
+		"name": "Perth Brewing Co",
+		"icon": "perth.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJy2_yeXwO0kwRoiN4tABZxKg"],
+		"name": "Stalwart Brewing Company",
+		"icon": "stalwart.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJT_28uDgEzkwRHTRNezw9L9A"],
+		"name": "Tooth and Nail Brewing Company",
+		"icon": "toothandnail.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJy2_yeXwO0kwRoiN4tABZxKg"],
+		"name": "Waller Street Brewing",
+		"icon": "wallerst.png",
+		"recommendation": "Blind Baron Sour IPA ; ABV 6.5% - IBU ~90 ; Sour. Sour. Sourrrrrrrrr. But good."
+	},
+	{
+		"placeId": ["ChIJHagLgKIAzkwRlkpc-eHR2to"],
+		"name": "Whiprsnapr Brewing Co.",
+		"icon": "whiprsnapr.png",
+		"recommendation": null
+	},
+	{
+		"placeId": [],
+		"name": "Whitewater Brewing Co.",
+		"recommendation": "Class V IPA ; ABV 5.5% - IBU 72 ; Not all that bitter and big on the citrus flavour.  Makes for a different but delicious IPA."
+	}
+]
