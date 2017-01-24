@@ -420,7 +420,7 @@
 	                if (!_this.infoboxContents) {
 	                    _this.requestAdditionalInfo(_this.baseInfo.place_id);
 	                } else {
-	                    (0, _infoBox.drawInfobox)(_this.infoboxContents);
+	                    (0, _infoBox.drawInfobox)(_this.infoboxContents, _this.brewery.marker);
 	                }
 	            });
 	        }
