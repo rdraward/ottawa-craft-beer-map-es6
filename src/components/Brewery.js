@@ -31,7 +31,7 @@ export default class Brewery {
             if (!this.infoboxContents) {
                 this.requestAdditionalInfo(this.baseInfo.place_id);
             } else {
-                drawInfobox(this.infoboxContents)
+                drawInfobox(this.infoboxContents, this.brewery.marker)
             }
         });
     }
