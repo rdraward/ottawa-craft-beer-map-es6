@@ -291,34 +291,50 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	var styledBrewMap = exports.styledBrewMap = [{
-	    "stylers": [{
-	        "hue": "#00d4ff"
-	    }, {
-	        "saturation": 25
-	    }]
+	  "featureType": "landscape.man_made",
+	  "elementType": "geometry",
+	  "stylers": [{
+	    "color": "#8dd3c7"
+	  }, {
+	    "lightness": 75
+	  }]
 	}, {
-	    "elementType": "labels.icon",
-	    "stylers": [{
-	        "visibility": "off"
-	    }]
+	  "featureType": "landscape.natural",
+	  "elementType": "geometry",
+	  "stylers": [{
+	    "color": "#b3de69"
+	  }, {
+	    "lightness": 65
+	  }]
 	}, {
-	    "featureType": "road",
-	    "elementType": "geometry",
-	    "stylers": [{
-	        "visibility": "simplified"
-	    }, {
-	        "color": "#f24140"
-	    }]
+	  "featureType": "road",
+	  "elementType": "geometry",
+	  "stylers": [{
+	    "visibility": "simplified",
+	    "color": "#ffffb3"
+	  }, {
+	    "lightness": 25
+	  }, {
+	    "weight": 1
+	  }]
+	}, {
+	  "featureType": "water",
+	  "elementType": "geometry",
+	  "stylers": [{
+	    "color": "#80b1d3"
+	  }, {
+	    "lightness": 10
+	  }]
 	}];
 	
 	var iconBase = exports.iconBase = 'icons/';
 	
 	var ottawaLatLong = exports.ottawaLatLong = {
-	    lat: 45.3815,
-	    lng: -75.7072
+	  lat: 45.3815,
+	  lng: -75.7072
 	};
 
 /***/ },

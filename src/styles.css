@@ -43,6 +43,7 @@ body {
 
 .brewpub-filter {
     padding: 5px;
+    margin-bottom: 5px;
     background-color: white;
     border: 2px solid lightblue;
     font-size: 14px;
