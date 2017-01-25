@@ -118,24 +118,26 @@
 	                    lat: position.coords.latitude,
 	                    lng: position.coords.longitude
 	                };
-	                _this.addUserMarker(userPos);
+	                _this.user = _this.addUserMarker(userPos);
 	            }, function (error) {
 	                return console.log(error);
 	            });
 	        }
 	    }
 	
+	    /*
+	     * Add the user to the map
+	     */
+	
+	
 	    _createClass(BrewMap, [{
 	        key: 'addUserMarker',
 	        value: function addUserMarker(userPos) {
-	            new _User2.default(userPos);
+	            return new _User2.default(userPos);
 	        }
 	
 	        /*
 	         * Callback from getting the initial brewery data
-	         *
-	         * @param {Object}
-	         *		breweryData - The json info from the standard Google Places API request
 	         */
 	
 	    }, {
@@ -168,6 +170,11 @@
 	                }
 	            }
 	        }
+	
+	        /*
+	         * Build and enable the brewpub filter button
+	         */
+	
 	    }, {
 	        key: 'setupBrewpubFilter',
 	        value: function setupBrewpubFilter() {
@@ -181,10 +188,10 @@
 	            checkbox.checked = this.brewpubsHidden;
 	            checkbox.id = 'brewpub-filter-check';
 	
-	            $(checkbox).change(function () {
+	            checkbox.onchange = function () {
 	                _this3.brewpubsHidden = !_this3.brewpubsHidden;
 	                _this3.applyBrewpubVisibility(_this3.brewpubsHidden);
-	            });
+	            };
 	
 	            var label = document.createElement('label');
 	            label.htmlFor = 'brewpub-filter-check';
@@ -195,11 +202,16 @@
 	            filter.appendChild(label);
 	            return filter;
 	        }
+	
+	        /*
+	         * Toggle brewpub visibility
+	         */
+	
 	    }, {
 	        key: 'applyBrewpubVisibility',
 	        value: function applyBrewpubVisibility(state) {
-	            for (var i = 0; i < this.breweries.length; i++) {
-	                this.breweries[i].toggleBrewpubVisibility(!state);
+	            for (var _i2 = 0; _i2 < this.breweries.length; _i2++) {
+	                this.breweries[_i2].toggleBrewpubVisibility(!state);
 	            }
 	        }
 	    }]);

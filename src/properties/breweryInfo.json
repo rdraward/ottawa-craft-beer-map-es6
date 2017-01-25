@@ -1,4 +1,4 @@
-var breweryRecommendations = [
+const breweryRecommendations = [
 	{
 		"placeId": ["ChIJNfCbgqoJ0kwRO8OMJC2fu3M"],
 		"name": "The Old Mill at Ashton",

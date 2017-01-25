@@ -28,7 +28,7 @@ export function formatDetails(info, recommendation) {
     const openClass = breweryFeature.opening_hours.open_now ? 'open' : 'closed';
 
     let openHours = "<div><p class='remove-margin'>";
-    for (var i = 0; i < breweryFeature.opening_hours.weekday_text.length; i++) {
+    for (let i = 0; i < breweryFeature.opening_hours.weekday_text.length; i++) {
         if (currentDay === ((i + 1) % 7)) {
             openHours += "</p><p class='" + openClass + " remove-margin'>";
             openHours += writeWeekdayLine(breweryFeature.opening_hours.weekday_text[i]);

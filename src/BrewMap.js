@@ -35,21 +35,21 @@ export default class BrewMap {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                this.addUserMarker(userPos);
+                this.user = this.addUserMarker(userPos);
 
             }, error => console.log(error));
         }
     }
 
+    /*
+     * Add the user to the map
+     */
     addUserMarker(userPos) {
-        new User(userPos);
+        return new User(userPos);
     }
 
     /*
      * Callback from getting the initial brewery data
-     *
-     * @param {Object}
-     *		breweryData - The json info from the standard Google Places API request
      */
     populateMap(baseBreweryInfo, status, pagination) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -73,21 +73,23 @@ export default class BrewMap {
         }
     }
 
+    /*
+     * Build and enable the brewpub filter button
+     */
     setupBrewpubFilter() {
-        var filter = document.createElement('div');
+        let filter = document.createElement('div');
         filter.className = 'brewpub-filter';
 
-        var checkbox = document.createElement('input');
+        let checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = this.brewpubsHidden;
         checkbox.id = 'brewpub-filter-check';
-
-        $(checkbox).change(() => {
+        checkbox.onchange = () => {
             this.brewpubsHidden = !this.brewpubsHidden;
             this.applyBrewpubVisibility(this.brewpubsHidden);
-        });
+        };
 
-        var label = document.createElement('label')
+        let label = document.createElement('label')
         label.htmlFor = 'brewpub-filter-check';
         label.className = 'roboto';
         label.appendChild(document.createTextNode('Hide brewpubs'));
@@ -97,8 +99,11 @@ export default class BrewMap {
         return filter;
     }
 
+    /*
+     * Toggle brewpub visibility
+     */
     applyBrewpubVisibility(state) {
-        for (var i = 0; i < this.breweries.length; i++) {
+        for (let i = 0; i < this.breweries.length; i++) {
             this.breweries[i].toggleBrewpubVisibility(!state);
         }
     }
