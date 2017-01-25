@@ -102,7 +102,7 @@
 	        this.breweries = [];
 	
 	        (0, _bounds.limitMapScroll)(_mapsService.map);
-	        _mapsService.map.controls[google.maps.ControlPosition.BOTTOM].push(this.setupBrewpubFilter());
+	        _mapsService.map.controls[google.maps.ControlPosition.BOTTOM].push(this.setupCustomControls());
 	
 	        // make the request to get the brewery data on load
 	        _mapsService.service.nearbySearch({
@@ -170,6 +170,30 @@
 	                }
 	            }
 	        }
+	    }, {
+	        key: 'setupCustomControls',
+	        value: function setupCustomControls() {
+	            var customControls = document.createElement('div');
+	            customControls.className = 'custom-controls';
+	
+	            customControls.appendChild(this.setupClosestBreweryButton());
+	            customControls.appendChild(this.setupBrewpubFilter());
+	
+	            return customControls;
+	        }
+	    }, {
+	        key: 'setupClosestBreweryButton',
+	        value: function setupClosestBreweryButton() {
+	            var closestBrewreyButton = document.createElement('input');
+	            closestBrewreyButton.type = 'button';
+	            closestBrewreyButton.className = 'closest-brewery';
+	            closestBrewreyButton.value = 'Bring me to the closest brewery!';
+	            closestBrewreyButton.onclick = function () {
+	                console.log('yay');
+	            };
+	
+	            return closestBrewreyButton;
+	        }
 	
 	        /*
 	         * Build and enable the brewpub filter button
@@ -187,7 +211,6 @@
 	            checkbox.type = 'checkbox';
 	            checkbox.checked = this.brewpubsHidden;
 	            checkbox.id = 'brewpub-filter-check';
-	
 	            checkbox.onchange = function () {
 	                _this3.brewpubsHidden = !_this3.brewpubsHidden;
 	                _this3.applyBrewpubVisibility(_this3.brewpubsHidden);

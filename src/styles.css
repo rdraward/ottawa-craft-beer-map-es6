@@ -41,10 +41,23 @@ body {
     margin-left: 10px;
 }
 
-.brewpub-filter {
-    padding: 5px;
-    margin-bottom: 5px;
-    background-color: white;
-    border: 2px solid lightblue;
-    font-size: 14px;
+.custom-controls {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: white;
+  border: 2px solid lightblue;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.closest-brewery {
+  margin: 0px 0px 5px 0px;
+  line-height: 40px;
+  padding: 0 30px;
+  background: lightblue;
+  border: none;
+  font-size: 14px;
 }
