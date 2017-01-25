@@ -88,6 +88,10 @@
 	
 	var _mapProps = __webpack_require__(4);
 	
+	var _distance = __webpack_require__(9);
+	
+	var _distance2 = _interopRequireDefault(_distance);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -170,6 +174,11 @@
 	                }
 	            }
 	        }
+	
+	        /**
+	         * Add custom map controls
+	         */
+	
 	    }, {
 	        key: 'setupCustomControls',
 	        value: function setupCustomControls() {
@@ -181,15 +190,22 @@
 	
 	            return customControls;
 	        }
+	
+	        /**
+	         * Build button to display path from user to closest brewery
+	         */
+	
 	    }, {
 	        key: 'setupClosestBreweryButton',
 	        value: function setupClosestBreweryButton() {
+	            var _this3 = this;
+	
 	            var closestBrewreyButton = document.createElement('input');
 	            closestBrewreyButton.type = 'button';
 	            closestBrewreyButton.className = 'closest-brewery';
 	            closestBrewreyButton.value = 'Bring me to the closest brewery!';
 	            closestBrewreyButton.onclick = function () {
-	                console.log('yay');
+	                (0, _distance2.default)(_this3.user, _this3.breweries);
 	            };
 	
 	            return closestBrewreyButton;
@@ -202,7 +218,7 @@
 	    }, {
 	        key: 'setupBrewpubFilter',
 	        value: function setupBrewpubFilter() {
-	            var _this3 = this;
+	            var _this4 = this;
 	
 	            var filter = document.createElement('div');
 	            filter.className = 'brewpub-filter';
@@ -212,8 +228,8 @@
 	            checkbox.checked = this.brewpubsHidden;
 	            checkbox.id = 'brewpub-filter-check';
 	            checkbox.onchange = function () {
-	                _this3.brewpubsHidden = !_this3.brewpubsHidden;
-	                _this3.applyBrewpubVisibility(_this3.brewpubsHidden);
+	                _this4.brewpubsHidden = !_this4.brewpubsHidden;
+	                _this4.applyBrewpubVisibility(_this4.brewpubsHidden);
 	            };
 	
 	            var label = document.createElement('label');
@@ -602,6 +618,21 @@
 	
 	function createLatLng(lat, lng) {
 	    return new google.maps.LatLng(lat, lng);
+	}
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = findNearestBrewery;
+	function findNearestBrewery(user, breweries) {
+	  console.log(user);
+	  console.log(breweries);
 	}
 
 /***/ }

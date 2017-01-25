@@ -11,6 +11,9 @@ import {
 import {
     ottawaLatLong
 } from './properties/map-props';
+import
+  findNearestBrewery
+from './utils/distance';
 
 export default class BrewMap {
 
@@ -73,6 +76,9 @@ export default class BrewMap {
         }
     }
 
+    /**
+     * Add custom map controls
+     */
     setupCustomControls() {
       let customControls = document.createElement('div');
       customControls.className = 'custom-controls';
@@ -83,13 +89,16 @@ export default class BrewMap {
       return customControls;
     }
 
+    /**
+     * Build button to display path from user to closest brewery
+     */
     setupClosestBreweryButton() {
       let closestBrewreyButton = document.createElement('input');
       closestBrewreyButton.type = 'button';
       closestBrewreyButton.className = 'closest-brewery';
       closestBrewreyButton.value = 'Bring me to the closest brewery!'
       closestBrewreyButton.onclick = () => {
-        console.log('yay');
+        findNearestBrewery(this.user, this.breweries);
       }
 
       return closestBrewreyButton;
