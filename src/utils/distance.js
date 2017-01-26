@@ -5,7 +5,7 @@ import {
 export default function findNearestBrewery(user, breweries, brewpubsHidden) {
   const userPos = user.getPosition();
   let distance = null;
-  let shortestDistance = Number.MAX_SAFE_INTEGER;
+  let shortestDistance = -1;
   let closestBreweryPos = null;
   let closestIsBrewpub = false;
 
@@ -15,7 +15,7 @@ export default function findNearestBrewery(user, breweries, brewpubsHidden) {
       const breweryPos = breweries[i].getPosition();
       distance = calculateLatLongDistance(userPos, breweryPos);
 
-      if(shortestDistance > distance) {
+      if(shortestDistance > distance || shortestDistance === -1) {
         shortestDistance = distance;
         closestBreweryPos = breweryPos;
         closestIsBrewpub = brewpub;

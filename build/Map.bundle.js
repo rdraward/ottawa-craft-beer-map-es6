@@ -108,6 +108,7 @@
 	        this.brewpubsHidden = false;
 	        this.closestIsBrewpub = false;
 	        this.breweries = [];
+	        this.user = {};
 	
 	        (0, _bounds.limitMapScroll)(_mapsService.map);
 	        var controls = this.setupCustomControls();
@@ -674,7 +675,7 @@
 	function findNearestBrewery(user, breweries, brewpubsHidden) {
 	  var userPos = user.getPosition();
 	  var distance = null;
-	  var shortestDistance = Number.MAX_SAFE_INTEGER;
+	  var shortestDistance = -1;
 	  var closestBreweryPos = null;
 	  var closestIsBrewpub = false;
 	
@@ -684,7 +685,7 @@
 	      var breweryPos = breweries[i].getPosition();
 	      distance = calculateLatLongDistance(userPos, breweryPos);
 	
-	      if (shortestDistance > distance) {
+	      if (shortestDistance > distance || shortestDistance === -1) {
 	        shortestDistance = distance;
 	        closestBreweryPos = breweryPos;
 	        closestIsBrewpub = brewpub;
