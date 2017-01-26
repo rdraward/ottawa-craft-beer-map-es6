@@ -19,7 +19,9 @@ export default class BrewMap {
 
     constructor() {
         this.brewpubsHidden = false;
+        this.closestIsBrewpub = false;
         this.breweries = [];
+        this.user = {};
 
         limitMapScroll(map);
         const controls = this.setupCustomControls();
@@ -102,7 +104,7 @@ export default class BrewMap {
       closestBrewreyButton.value = 'Bring me to the closest brewery!';
       closestBrewreyButton.disabled = true;
       closestBrewreyButton.onclick = () => {
-        findNearestBrewery(this.user, this.breweries, this.brewpubsHidden);
+        this.closestIsBrewpub = findNearestBrewery(this.user, this.breweries, this.brewpubsHidden);
       }
 
       return closestBrewreyButton;
@@ -122,6 +124,9 @@ export default class BrewMap {
         checkbox.onchange = () => {
             this.brewpubsHidden = !this.brewpubsHidden;
             this.applyBrewpubVisibility(this.brewpubsHidden);
+            if(this.brewpubsHidden && this.closestIsBrewpub) {
+              findNearestBrewery(this.user, this.breweries, this.brewpubsHidden);
+            }
         };
 
         let label = document.createElement('label')

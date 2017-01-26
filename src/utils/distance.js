@@ -7,20 +7,25 @@ export default function findNearestBrewery(user, breweries, brewpubsHidden) {
   let distance = null;
   let shortestDistance = Number.MAX_SAFE_INTEGER;
   let closestBreweryPos = null;
+  let closestIsBrewpub = false;
 
   for(let i = 0; i < breweries.length; i++) {
-    if(!brewpubsHidden || !breweries[i].extraInfo.brewpub) {
+    const brewpub = breweries[i].extraInfo.brewpub;
+    if(!brewpubsHidden || !brewpub) {
       const breweryPos = breweries[i].getPosition();
       distance = calculateLatLongDistance(userPos, breweryPos);
 
       if(shortestDistance > distance) {
         shortestDistance = distance;
         closestBreweryPos = breweryPos;
+        closestIsBrewpub = brewpub;
       }
     }
   }
 
   drawPath(userPos, closestBreweryPos);
+  // redraw if closest is brewpub and flip filter
+  return closestIsBrewpub;
 }
 
 // formula from http://www.movable-type.co.uk/scripts/latlong.html

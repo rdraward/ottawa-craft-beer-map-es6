@@ -106,6 +106,7 @@
 	        _classCallCheck(this, BrewMap);
 	
 	        this.brewpubsHidden = false;
+	        this.closestIsBrewpub = false;
 	        this.breweries = [];
 	
 	        (0, _bounds.limitMapScroll)(_mapsService.map);
@@ -212,7 +213,7 @@
 	            closestBrewreyButton.value = 'Bring me to the closest brewery!';
 	            closestBrewreyButton.disabled = true;
 	            closestBrewreyButton.onclick = function () {
-	                (0, _distance2.default)(_this3.user, _this3.breweries, _this3.brewpubsHidden);
+	                _this3.closestIsBrewpub = (0, _distance2.default)(_this3.user, _this3.breweries, _this3.brewpubsHidden);
 	            };
 	
 	            return closestBrewreyButton;
@@ -237,6 +238,9 @@
 	            checkbox.onchange = function () {
 	                _this4.brewpubsHidden = !_this4.brewpubsHidden;
 	                _this4.applyBrewpubVisibility(_this4.brewpubsHidden);
+	                if (_this4.brewpubsHidden && _this4.closestIsBrewpub) {
+	                    (0, _distance2.default)(_this4.user, _this4.breweries, _this4.brewpubsHidden);
+	                }
 	            };
 	
 	            var label = document.createElement('label');
@@ -672,20 +676,25 @@
 	  var distance = null;
 	  var shortestDistance = Number.MAX_SAFE_INTEGER;
 	  var closestBreweryPos = null;
+	  var closestIsBrewpub = false;
 	
 	  for (var i = 0; i < breweries.length; i++) {
-	    if (!brewpubsHidden || !breweries[i].extraInfo.brewpub) {
+	    var brewpub = breweries[i].extraInfo.brewpub;
+	    if (!brewpubsHidden || !brewpub) {
 	      var breweryPos = breweries[i].getPosition();
 	      distance = calculateLatLongDistance(userPos, breweryPos);
 	
 	      if (shortestDistance > distance) {
 	        shortestDistance = distance;
 	        closestBreweryPos = breweryPos;
+	        closestIsBrewpub = brewpub;
 	      }
 	    }
 	  }
 	
 	  drawPath(userPos, closestBreweryPos);
+	  // redraw if closest is brewpub and flip filter
+	  return closestIsBrewpub;
 	}
 	
 	// formula from http://www.movable-type.co.uk/scripts/latlong.html
