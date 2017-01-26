@@ -102,7 +102,7 @@ export default class BrewMap {
       closestBrewreyButton.value = 'Bring me to the closest brewery!';
       closestBrewreyButton.disabled = true;
       closestBrewreyButton.onclick = () => {
-        findNearestBrewery(this.user, this.breweries);
+        findNearestBrewery(this.user, this.breweries, this.brewpubsHidden);
       }
 
       return closestBrewreyButton;

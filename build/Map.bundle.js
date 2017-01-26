@@ -127,6 +127,7 @@
 	                    lng: position.coords.longitude
 	                };
 	                _this.user = _this.addUserMarker(userPos);
+	                // enable nearest brewery function once request returns
 	                controls.firstElementChild.disabled = false;
 	            }, function (error) {
 	                return console.log(error);
@@ -211,7 +212,7 @@
 	            closestBrewreyButton.value = 'Bring me to the closest brewery!';
 	            closestBrewreyButton.disabled = true;
 	            closestBrewreyButton.onclick = function () {
-	                (0, _distance2.default)(_this3.user, _this3.breweries);
+	                (0, _distance2.default)(_this3.user, _this3.breweries, _this3.brewpubsHidden);
 	            };
 	
 	            return closestBrewreyButton;
@@ -488,7 +489,6 @@
 	    function Brewery(baseInfo, extraInfo) {
 	        _classCallCheck(this, Brewery);
 	
-	        this.isBrewpub = extraInfo.isBrewpub;
 	        this.baseInfo = baseInfo;
 	        this.extraInfo = extraInfo;
 	        if (extraInfo.icon) {
@@ -667,17 +667,21 @@
 	
 	var _directionsService = __webpack_require__(10);
 	
-	function findNearestBrewery(user, breweries) {
+	function findNearestBrewery(user, breweries, brewpubsHidden) {
 	  var userPos = user.getPosition();
 	  var distance = null;
 	  var shortestDistance = Number.MAX_SAFE_INTEGER;
 	  var closestBreweryPos = null;
 	
 	  for (var i = 0; i < breweries.length; i++) {
-	    var breweryPos = breweries[i].getPosition();
-	    distance = calculateLatLongDistance(userPos, breweryPos);
-	    if (shortestDistance > distance) {
-	      closestBreweryPos = breweryPos;
+	    if (!brewpubsHidden || !breweries[i].extraInfo.brewpub) {
+	      var breweryPos = breweries[i].getPosition();
+	      distance = calculateLatLongDistance(userPos, breweryPos);
+	
+	      if (shortestDistance > distance) {
+	        shortestDistance = distance;
+	        closestBreweryPos = breweryPos;
+	      }
 	    }
 	  }
 	
@@ -707,6 +711,7 @@
 	  };
 	  _directionsService.directionsService.route(request, function (result, status) {
 	    if (status === 'OK') {
+	      _directionsService.directionsDisplay.set('directions', null);
 	      _directionsService.directionsDisplay.setDirections(result);
 	    }
 	  });

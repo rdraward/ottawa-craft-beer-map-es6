@@ -9,7 +9,6 @@ import {
 
 export default class Brewery {
     constructor(baseInfo, extraInfo) {
-        this.isBrewpub = extraInfo.isBrewpub;
         this.baseInfo = baseInfo;
         this.extraInfo = extraInfo;
         if (extraInfo.icon) {

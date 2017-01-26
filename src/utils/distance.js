@@ -2,17 +2,21 @@ import {
   directionsService, directionsDisplay
 } from '../mapsApi/directionsService';
 
-export default function findNearestBrewery(user, breweries) {
+export default function findNearestBrewery(user, breweries, brewpubsHidden) {
   const userPos = user.getPosition();
   let distance = null;
   let shortestDistance = Number.MAX_SAFE_INTEGER;
   let closestBreweryPos = null;
 
   for(let i = 0; i < breweries.length; i++) {
-    const breweryPos = breweries[i].getPosition();
-    distance = calculateLatLongDistance(userPos, breweryPos);
-    if(shortestDistance > distance) {
-      closestBreweryPos = breweryPos;
+    if(!brewpubsHidden || !breweries[i].extraInfo.brewpub) {
+      const breweryPos = breweries[i].getPosition();
+      distance = calculateLatLongDistance(userPos, breweryPos);
+
+      if(shortestDistance > distance) {
+        shortestDistance = distance;
+        closestBreweryPos = breweryPos;
+      }
     }
   }
 
@@ -40,6 +44,7 @@ function drawPath(userPos, breweryPos) {
   };
   directionsService.route(request, (result, status) => {
     if(status === 'OK') {
+      directionsDisplay.set('directions', null);
       directionsDisplay.setDirections(result);
     }
   });
