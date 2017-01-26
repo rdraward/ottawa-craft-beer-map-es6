@@ -22,7 +22,8 @@ export default class BrewMap {
         this.breweries = [];
 
         limitMapScroll(map);
-        map.controls[google.maps.ControlPosition.BOTTOM].push(this.setupCustomControls());
+        const controls = this.setupCustomControls();
+        map.controls[google.maps.ControlPosition.BOTTOM].push(controls);
 
         // make the request to get the brewery data on load
         placesService.nearbySearch({
@@ -39,6 +40,8 @@ export default class BrewMap {
                     lng: position.coords.longitude
                 };
                 this.user = this.addUserMarker(userPos);
+                // enable nearest brewery function once request returns
+                controls.firstElementChild.disabled = false;
 
             }, error => console.log(error));
         }
@@ -96,7 +99,8 @@ export default class BrewMap {
       let closestBrewreyButton = document.createElement('input');
       closestBrewreyButton.type = 'button';
       closestBrewreyButton.className = 'closest-brewery';
-      closestBrewreyButton.value = 'Bring me to the closest brewery!'
+      closestBrewreyButton.value = 'Bring me to the closest brewery!';
+      closestBrewreyButton.disabled = true;
       closestBrewreyButton.onclick = () => {
         findNearestBrewery(this.user, this.breweries);
       }

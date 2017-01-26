@@ -109,7 +109,8 @@
 	        this.breweries = [];
 	
 	        (0, _bounds.limitMapScroll)(_mapsService.map);
-	        _mapsService.map.controls[google.maps.ControlPosition.BOTTOM].push(this.setupCustomControls());
+	        var controls = this.setupCustomControls();
+	        _mapsService.map.controls[google.maps.ControlPosition.BOTTOM].push(controls);
 	
 	        // make the request to get the brewery data on load
 	        _mapsService.placesService.nearbySearch({
@@ -126,6 +127,7 @@
 	                    lng: position.coords.longitude
 	                };
 	                _this.user = _this.addUserMarker(userPos);
+	                controls.firstElementChild.disabled = false;
 	            }, function (error) {
 	                return console.log(error);
 	            });
@@ -207,6 +209,7 @@
 	            closestBrewreyButton.type = 'button';
 	            closestBrewreyButton.className = 'closest-brewery';
 	            closestBrewreyButton.value = 'Bring me to the closest brewery!';
+	            closestBrewreyButton.disabled = true;
 	            closestBrewreyButton.onclick = function () {
 	                (0, _distance2.default)(_this3.user, _this3.breweries);
 	            };
