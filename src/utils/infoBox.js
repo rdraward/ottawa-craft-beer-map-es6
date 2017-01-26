@@ -15,7 +15,6 @@ export function drawInfobox(content, marker) {
     infobox.open(map, marker);
 }
 
-
 /*
  * Format the text contained in the info box
  *

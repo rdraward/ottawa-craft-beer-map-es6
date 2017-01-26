@@ -1,6 +1,6 @@
 import Marker from './Marker';
 import {
-    service
+    placesService
 } from '../mapsApi/mapsService';
 import {
     drawInfobox,
@@ -33,7 +33,7 @@ export default class Brewery {
     }
 
     requestAdditionalInfo(placeId) {
-        service.getDetails({
+        placesService.getDetails({
             placeId: placeId
         }, (place, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -48,5 +48,9 @@ export default class Brewery {
       if(this.extraInfo.brewpub) {
         this.brewery.marker.setVisible(state);
       }
+    }
+
+    getPosition() {
+      return this.brewery.getPosition();
     }
 }

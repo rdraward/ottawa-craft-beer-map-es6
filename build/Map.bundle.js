@@ -52,11 +52,14 @@
 	
 	var _mapsService = __webpack_require__(5);
 	
+	var _directionsService = __webpack_require__(10);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var initMap = function initMap() {
 	    (0, _mapsService.initGMap)();
 	    (0, _mapsService.initGService)();
+	    (0, _directionsService.initDirService)();
 	    new _BrewMap2.default();
 	};
 	
@@ -109,7 +112,7 @@
 	        _mapsService.map.controls[google.maps.ControlPosition.BOTTOM].push(this.setupCustomControls());
 	
 	        // make the request to get the brewery data on load
-	        _mapsService.service.nearbySearch({
+	        _mapsService.placesService.nearbySearch({
 	            location: (0, _bounds.createLatLng)(_mapProps.ottawaLatLong.lat, _mapProps.ottawaLatLong.lng),
 	            keyword: 'brewery',
 	            radius: '50000'
@@ -183,7 +186,7 @@
 	        key: 'setupCustomControls',
 	        value: function setupCustomControls() {
 	            var customControls = document.createElement('div');
-	            customControls.className = 'custom-controls';
+	            customControls.className = 'custom-controls gm-svpc';
 	
 	            customControls.appendChild(this.setupClosestBreweryButton());
 	            customControls.appendChild(this.setupBrewpubFilter());
@@ -270,6 +273,8 @@
 	    value: true
 	});
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
 	var _Marker = __webpack_require__(3);
 	
 	var _Marker2 = _interopRequireDefault(_Marker);
@@ -278,12 +283,23 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var User = function User(userPos) {
-	    _classCallCheck(this, User);
+	// DO SOMETHING ELSE WITH THIS OR REMOVE CLASS????
+	var User = function () {
+	    function User(userPos) {
+	        _classCallCheck(this, User);
 	
-	    this.marker = new _Marker2.default(userPos, 'small-beer.png', 'Your current location!');
-	    // will do something with this in the near future
-	};
+	        this.marker = new _Marker2.default(userPos, 'small-beer.png', 'Your current location!');
+	    }
+	
+	    _createClass(User, [{
+	        key: 'getPosition',
+	        value: function getPosition() {
+	            return this.marker.getPosition();
+	        }
+	    }]);
+	
+	    return User;
+	}();
 	
 	exports.default = User;
 
@@ -327,6 +343,11 @@
 	        key: 'addCallback',
 	        value: function addCallback(type, action) {
 	            this.marker.addListener(type, action);
+	        }
+	    }, {
+	        key: 'getPosition',
+	        value: function getPosition() {
+	            return this.marker.position;
 	        }
 	    }]);
 	
@@ -397,7 +418,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.service = exports.map = undefined;
+	exports.directionsService = exports.placesService = exports.map = undefined;
 	exports.initGMap = initGMap;
 	exports.initGService = initGService;
 	
@@ -424,10 +445,15 @@
 	}
 	
 	// set up singleton for service
-	var service = exports.service = null;
+	var placesService = exports.placesService = null;
+	var directionsService = exports.directionsService = null;
 	function initGService() {
-	    if (!service) {
-	        exports.service = service = new google.maps.places.PlacesService(map);
+	    if (!placesService) {
+	        exports.placesService = placesService = new google.maps.places.PlacesService(map);
+	    }
+	
+	    if (!directionsService) {
+	        exports.directionsService = directionsService = new google.maps.DirectionsService();
 	    }
 	}
 
@@ -491,7 +517,7 @@
 	        value: function requestAdditionalInfo(placeId) {
 	            var _this2 = this;
 	
-	            _mapsService.service.getDetails({
+	            _mapsService.placesService.getDetails({
 	                placeId: placeId
 	            }, function (place, status) {
 	                if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -507,6 +533,11 @@
 	            if (this.extraInfo.brewpub) {
 	                this.brewery.marker.setVisible(state);
 	            }
+	        }
+	    }, {
+	        key: 'getPosition',
+	        value: function getPosition() {
+	            return this.brewery.getPosition();
 	        }
 	    }]);
 	
@@ -622,17 +653,86 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.default = findNearestBrewery;
+	
+	var _directionsService = __webpack_require__(10);
+	
 	function findNearestBrewery(user, breweries) {
-	  console.log(user);
-	  console.log(breweries);
+	  var userPos = user.getPosition();
+	  var distance = null;
+	  var shortestDistance = Number.MAX_SAFE_INTEGER;
+	  var closestBreweryPos = null;
+	
+	  for (var i = 0; i < breweries.length; i++) {
+	    var breweryPos = breweries[i].getPosition();
+	    distance = calculateLatLongDistance(userPos, breweryPos);
+	    if (shortestDistance > distance) {
+	      closestBreweryPos = breweryPos;
+	    }
+	  }
+	
+	  drawPath(userPos, closestBreweryPos);
+	}
+	
+	// formula from http://www.movable-type.co.uk/scripts/latlong.html
+	// doing 'dumb' distance to start
+	// another option - take 3(?) closest and find shortest actual travel distance
+	var R = 6371e3;
+	function calculateLatLongDistance(p1, p2) {
+	  var φ1 = toRadians(p1.lat()),
+	      φ2 = toRadians(p2.lat()),
+	      Δλ = toRadians(p2.lng() - p1.lng());
+	  return Math.acos(Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ)) * R;
+	}
+	
+	function toRadians(x) {
+	  return x * Math.PI / 180;
+	}
+	
+	function drawPath(userPos, breweryPos) {
+	  var request = {
+	    origin: userPos,
+	    destination: breweryPos,
+	    travelMode: 'DRIVING'
+	  };
+	  _directionsService.directionsService.route(request, function (result, status) {
+	    if (status === 'OK') {
+	      _directionsService.directionsDisplay.setDirections(result);
+	    }
+	  });
+	}
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.directionsDisplay = exports.directionsService = undefined;
+	exports.initDirService = initDirService;
+	
+	var _mapsService = __webpack_require__(5);
+	
+	var directionsService = exports.directionsService = null;
+	var directionsDisplay = exports.directionsDisplay = null;
+	function initDirService() {
+	  if (!directionsService) {
+	    exports.directionsService = directionsService = new google.maps.DirectionsService();
+	  }
+	  if (!directionsDisplay) {
+	    exports.directionsDisplay = directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
+	    directionsDisplay.setMap(_mapsService.map);
+	  }
 	}
 
 /***/ }

@@ -20,4 +20,8 @@ export default class Marker {
     addCallback(type, action) {
         this.marker.addListener(type, action);
     }
+
+    getPosition() {
+      return this.marker.position;
+    }
 }

@@ -1,8 +1,12 @@
 import Marker from './Marker';
 
+// DO SOMETHING ELSE WITH THIS OR REMOVE CLASS????
 export default class User {
     constructor(userPos) {
         this.marker = new Marker(userPos, 'small-beer.png', 'Your current location!');
-        // will do something with this in the near future
+    }
+
+    getPosition() {
+      return this.marker.getPosition();
     }
 }

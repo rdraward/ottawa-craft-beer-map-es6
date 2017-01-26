@@ -44,9 +44,15 @@ body {
 .custom-controls {
   padding: 10px;
   margin-bottom: 5px;
+
   background-color: white;
-  border: 2px solid lightblue;
   font-size: 14px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+
   display: flex;
   flex-direction: column;
   align-items: center;

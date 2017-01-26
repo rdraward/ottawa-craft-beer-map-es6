@@ -25,9 +25,14 @@ export function initGMap() {
 
 
 // set up singleton for service
-export let service = null;
+export let placesService = null;
+export let directionsService = null;
 export function initGService() {
-    if (!service) {
-        service = new google.maps.places.PlacesService(map);
+    if (!placesService) {
+        placesService = new google.maps.places.PlacesService(map);
+    }
+
+    if (!directionsService) {
+        directionsService = new google.maps.DirectionsService();
     }
 }

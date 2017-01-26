@@ -2,7 +2,7 @@ import User from './components/User';
 import Brewery from './components/Brewery';
 import {
     map,
-    service
+    placesService
 } from './mapsApi/mapsService';
 import {
     createLatLng,
@@ -25,7 +25,7 @@ export default class BrewMap {
         map.controls[google.maps.ControlPosition.BOTTOM].push(this.setupCustomControls());
 
         // make the request to get the brewery data on load
-        service.nearbySearch({
+        placesService.nearbySearch({
             location: createLatLng(ottawaLatLong.lat, ottawaLatLong.lng),
             keyword: 'brewery',
             radius: '50000'
@@ -81,7 +81,7 @@ export default class BrewMap {
      */
     setupCustomControls() {
       let customControls = document.createElement('div');
-      customControls.className = 'custom-controls';
+      customControls.className = 'custom-controls gm-svpc';
 
       customControls.appendChild(this.setupClosestBreweryButton());
       customControls.appendChild(this.setupBrewpubFilter())
