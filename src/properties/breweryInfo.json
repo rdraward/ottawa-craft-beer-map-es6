@@ -120,13 +120,13 @@ const breweryRecommendations = [
 		"placeId": ["ChIJn4MvQ1AEzkwRdo2vuno6UQA"],
 		"name": "Mill St. Brew Pub",
 		"icon": "millst.png",
-		"recommendation": null
+		"recommendation":  "Vanilla Porter ; ABV 5.0% - IBU 2.9 ; This is dessert for me.  One of my favourite widely available beers.  I can even buy this back home in Winnipeg now.  Not quite as good as the Double Trouble French Press Vanilla Stout (which is probably my favourite beer currently) but a pretty great alternative from a larger brewer."
 	},
 	{
 		"placeId": ["ChIJ3cLUzrYHzkwReNDGjZL4Dho"],
 		"name": "Nita Beer Company",
 		"icon": "nita.png",
-		"recommendation": null
+		"recommendation": "Lone Wolf McAle - Ginger Spiced Ale ; ABV 5.5% - IBU 7.5 ; Really good ale.  There isn't any room for weak ginger flavour here - the taste of ginger is STRONG and I love it.  As a ginger myself, I can always appreciate a beer that lives up to the lofty title.  As an aside, the Nita mainstay 5 Fingers Brown Ale is also great."
 	},
 	{
 		"placeId": [],
@@ -150,13 +150,13 @@ const breweryRecommendations = [
 		"placeId": ["ChIJKy7c6wMFzkwRgHunBsy0Mog"],
 		"name": "Waller Street Brewing",
 		"icon": "wallerst.png",
-		"recommendation": "Blind Baron Sour IPA ; ABV 6.5% - IBU ~90 ; Sour. Sour. Sourrrrrrrrr. But good."
+		"recommendation": "Blind Baron Sour IPA ; ABV 6.5% - IBU ~90 ; Sour. Sour. Sourrrrrrrrr. This is the first any only sour beer I have had the pleasure of trying so I have absolutely no reference as to whether it is good or not. I enjoyed it but could not drink more than 1 at a time."
 	},
 	{
 		"placeId": ["ChIJHagLgKIAzkwRlkpc-eHR2to"],
 		"name": "Whiprsnapr Brewing Co.",
 		"icon": "whiprsnapr.png",
-		"recommendation": null
+		"recommendation": "Carol Anne Irish Blonde Ale; ABV 4.7% - IBU 30 ; Decent crisp blone ale with a hoppy finish."
 	},
 	{
 		"placeId": [],
