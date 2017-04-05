@@ -47,7 +47,7 @@ const breweryRecommendations = [
 		"placeId": ["ChIJb_d3_sEHzkwRScu8-Y6igow"],
 		"name": "Broadhead Brewing Company",
 		"icon": "broadhead.png",
-		"recommendation": "Grindstone Amber Ale ; ABV 5% - IBU 25 ; Good standard amber ale - conveniently close to my workplace.  Now I just need to see about lifting the 'No beers in the office' rule."
+		"recommendation": "Dark Horse Stout ; ABV 5.5% - IBU 25.5 ; A decent oatmeal stout - nice and warm, fairly sweet compared to other locally brewed stouts. Also, conveniently close to my workplace.  Now I just need to see about lifting the 'No beers in the office' rule."
 	},
 	{
 		"placeId": ["ChIJEzZfDTEQzkwRTkC_7bo2uo4"],
