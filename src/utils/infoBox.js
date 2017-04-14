@@ -24,19 +24,24 @@ export function drawInfobox(content, marker) {
 export function formatDetails(info, recommendation) {
     const breweryFeature = info;
     const currentDay = getCurrentDay();
-    const openClass = breweryFeature.opening_hours.open_now ? 'open' : 'closed';
+    const openClass = breweryFeature.opening_hours && breweryFeature.opening_hours.open_now ? 'open' : 'closed';
 
     let openHours = "<div><p class='remove-margin'>";
-    for (let i = 0; i < breweryFeature.opening_hours.weekday_text.length; i++) {
-        if (currentDay === ((i + 1) % 7)) {
-            openHours += "</p><p class='" + openClass + " remove-margin'>";
-            openHours += writeWeekdayLine(breweryFeature.opening_hours.weekday_text[i]);
-            openHours += "</p>";
-        } else {
-            openHours += writeWeekdayLine(breweryFeature.opening_hours.weekday_text[i]);
-        }
+    // NOTE: for some reason, Stray Dog doesn't have hours
+    if(breweryFeature.opening_hours) {
+      for (let i = 0; i < breweryFeature.opening_hours.weekday_text.length; i++) {
+          if (currentDay === ((i + 1) % 7)) {
+              openHours += "</p><p class='" + openClass + " remove-margin'>";
+              openHours += writeWeekdayLine(breweryFeature.opening_hours.weekday_text[i]);
+              openHours += "</p>";
+          } else {
+              openHours += writeWeekdayLine(breweryFeature.opening_hours.weekday_text[i]);
+          }
+      }
+    } else {
+      openHours += 'Unknown - no data provided!</br></br>Check the brewery website or the Yellow Pages.';
     }
-    openHours += "</p></div>"
+    openHours += "</p></div>";
 
     const infoBox = "<div class='info-box'>" +
         "<h3>" + breweryFeature.name + "</h3>" +

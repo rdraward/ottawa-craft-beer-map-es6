@@ -44,6 +44,12 @@ const breweryRecommendations = [
 		"recommendation": null
 	},
 	{
+		"placeId": ["ChIJuYc6jBt4zkwRgSRLz49OfkI"],
+		"name": "Brasserie Tuque de Broue Brewery",
+		"icon": "tuquedebroue.png",
+		"recommendation": "Tuque Doree ; ABV 4.5% - IBU 17 ; A good pale ale to have when guests are coming over for a BBQ or to watch the game - not too crazy but much better than a Bud Light."
+	},
+	{
 		"placeId": ["ChIJb_d3_sEHzkwRScu8-Y6igow"],
 		"name": "Broadhead Brewing Company",
 		"icon": "broadhead.png",
@@ -54,6 +60,12 @@ const breweryRecommendations = [
 		"name": "Broken Stick Brewing Company",
 		"icon": "brokenstick.png",
 		"recommendation": "Lawnmower Lulu ; ABV 5.3% - IBU 33 ; Nice citrus wheat beer - perfect for the exceptionally long and hot summer."
+	},
+	{
+		"placeId": ["ChIJF6OIiKoh0kwRoasf-TYH5XI"],
+		"name": "Cartwright Springs Brewery",
+		"icon": "cartwrightsprings.png",
+		"recommendation": null
 	},
 	{
 		"placeId": [],
@@ -82,6 +94,12 @@ const breweryRecommendations = [
 		"recommendation": null
 	},
 	{
+		"placeId": ["ChIJaYDbw-wa0kwRaRPpXmgt_0c"],
+		"name": "Crooked Mile Brewing Company",
+		"icon": "crookedmile.png",
+		"recommendation": null
+	},
+	{
 		"placeId": ["ChIJU3SVOTAQzkwRfOC9aKfdWB0"],
 		"name": "Dominion City Brewing Co.",
 		"icon": "dominion.png",
@@ -96,6 +114,7 @@ const breweryRecommendations = [
 	{
 		"placeId": [],
 		"name": "Hoptail Brewery",
+		"icon": null,
 		"recommendation": null
 	},
 	{
@@ -141,9 +160,21 @@ const breweryRecommendations = [
 		"recommendation": null
 	},
 	{
+		"placeId": ["ChIJE1rmnOoTzkwRllkb6pWG33U"],
+		"name": "Stray Dog Brewing Company",
+		"icon": "straydog.png",
+		"recommendation": null
+	},
+	{
 		"placeId": ["ChIJT_28uDgEzkwRHTRNezw9L9A"],
 		"name": "Tooth and Nail Brewing Company",
 		"icon": "toothandnail.png",
+		"recommendation": null
+	},
+	{
+		"placeId": ["ChIJDUHDuzcEzkwRP4D-u9MaEIk"],
+		"name": "Vimy Brewing Company",
+		"icon": "vimy.png",
 		"recommendation": null
 	},
 	{
