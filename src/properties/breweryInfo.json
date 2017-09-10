@@ -112,6 +112,12 @@ const breweryRecommendations = [
 		"recommendation": null
 	},
 	{
+		"placeId": ["ChIJdc4Ju7EFzkwR6Rcafo2N76E"],
+		"name": "Flora Hall Brewing",
+		"icon": "florahall.png",
+		"recommendation": null
+	},
+	{
 		"placeId": [],
 		"name": "Hoptail Brewery",
 		"icon": null,
