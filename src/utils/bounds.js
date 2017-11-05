@@ -2,7 +2,7 @@ export function limitMapScroll(map) {
     // bounds of the desired area
     const allowedBounds = new google.maps.LatLngBounds(
         createLatLng(45.14115518089034, -76.15005880565646),
-        createLatLng(45.51227041310074, -75.08660896976092)
+        createLatLng(45.51227041310074, -74.58660896976092)
     );
     let lastValidCenter = map.getCenter();
 

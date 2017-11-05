@@ -121,6 +121,10 @@
 	            radius: '50000'
 	        }, this.populateMap.bind(this));
 	
+	        // Vankleek is too far to be captured by the places search
+	        // so do one specifically for Beaus
+	        this.addBeaus();
+	
 	        // add personal location - GET ME TO CLOSEST BEER
 	        if (navigator.geolocation) {
 	            navigator.geolocation.getCurrentPosition(function (position) {
@@ -165,6 +169,7 @@
 	
 	                    if (breweryExtras) {
 	                        _this2.breweries.push(new _Brewery2.default(baseBreweryInfo[_i], breweryExtras));
+	                        _this2.breweries[_this2.breweries.length - 1].toggleBrewpubVisibility(!_this2.brewpubsHidden);
 	                    } else {
 	                        // remove extra results
 	                        baseBreweryInfo.splice(_i, 1);
@@ -181,6 +186,20 @@
 	                    pagination.nextPage();
 	                }
 	            }
+	        }
+	
+	        /*
+	         * Add in Beau's Brewery
+	         */
+	
+	    }, {
+	        key: 'addBeaus',
+	        value: function addBeaus() {
+	            _mapsService.placesService.nearbySearch({
+	                location: (0, _bounds.createLatLng)(_mapProps.beausLatLong.lat, _mapProps.beausLatLong.lng),
+	                keyword: 'brewery',
+	                radius: '50000'
+	            }, this.populateMap.bind(this));
 	        }
 	
 	        /**
@@ -417,6 +436,11 @@
 	  lat: 45.3815,
 	  lng: -75.7072
 	};
+	
+	var beausLatLong = exports.beausLatLong = {
+	  lat: 45.5169,
+	  lng: -74.6372
+	};
 
 /***/ },
 /* 5 */
@@ -646,7 +670,7 @@
 	exports.createLatLng = createLatLng;
 	function limitMapScroll(map) {
 	    // bounds of the desired area
-	    var allowedBounds = new google.maps.LatLngBounds(createLatLng(45.14115518089034, -76.15005880565646), createLatLng(45.51227041310074, -75.08660896976092));
+	    var allowedBounds = new google.maps.LatLngBounds(createLatLng(45.14115518089034, -76.15005880565646), createLatLng(45.51227041310074, -74.58660896976092));
 	    var lastValidCenter = map.getCenter();
 	
 	    google.maps.event.addListener(map, 'center_changed', function () {

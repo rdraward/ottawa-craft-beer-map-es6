@@ -59,3 +59,8 @@ export const ottawaLatLong = {
     lat: 45.3815,
     lng: -75.7072
 };
+
+export const beausLatLong = {
+  lat: 45.5169,
+  lng: -74.6372
+};

@@ -6,7 +6,7 @@ const breweryRecommendations = [
 		"recommendation": "Vanilla Stout ; ABV 5.5% - IBU 70 ;  Ashton Brewing Company: I'm a sucker for a good vanilla stout and Ashton makes one of the best in the city."
 	},
 	{
-		"placeId": [],
+		"placeId": ["ChIJs6fOs57rzkwRsqKjUsNoTBU"],
 		"name": "Beaus All Natural Brewery",
 		"icon": "beaus.png",
 		"recommendation": "Haters Gonna Hate Imperial Kölsch ; ABV 8% - IBU 40 ; Will satisfy everyone's inner hipster."
@@ -15,13 +15,13 @@ const breweryRecommendations = [
 		"placeId": ["ChIJzZXd7j0EzkwRsoRqRb7fJCU"],
 		"name": "Beyond the Pale Brewing Company",
 		"icon": "beyondthepale.png",
-		"recommendation": "Rye Guy IPA ; ABV 6.7% - IBU 52 ; Weekend suggestion: Have a couple of these and stanky legg at the Lieutenant's Pump."
+		"recommendation": "Rye Guy IPA ; ABV 6.7% - IBU 52 ; Weekend suggestion: Have a couple of these and stanky legg at the Lieutenant's Pump.  BTP is probably Ottawa's top local brewery, it's impossible to make a bad choice with their beers."
 	},
 	{
 		"placeId": ["ChIJy1ccMnIPzkwRoO65LDwdCOg"],
 		"name": "Bicycle Craft Brewery",
 		"icon": "bicycle.png",
-		"recommendation": "Juan Almonte Jalapeno Pale Ale ; ABV 5.2% - IBU 32 ; Sounds really weird but one of the best tasting beers I've had in Ottawa. RULE: Whoever gets the jalapeno pepper has to drink it."
+		"recommendation": "Juan Almonte Jalapeno Pale Ale ; ABV 5.2% - IBU 32 ; Sounds really weird but one of the best tasting beers I've had in Ottawa. This typically sells out real quick and is only available over the summer so keep an eye out for it on Bicycle's website."
 	},
 	{
 		"placeId": ["ChIJSZJTafr_0UwRfbYNkFxpoAE"],
@@ -53,7 +53,7 @@ const breweryRecommendations = [
 		"placeId": ["ChIJb_d3_sEHzkwRScu8-Y6igow"],
 		"name": "Broadhead Brewing Company",
 		"icon": "broadhead.png",
-		"recommendation": "Dark Horse Stout ; ABV 5.5% - IBU 25.5 ; A decent oatmeal stout - nice and warm, fairly sweet compared to other locally brewed stouts. Also, conveniently close to my workplace.  Now I just need to see about lifting the 'No beers in the office' rule."
+		"recommendation": "BlueBerry Blonde ; ABV 5.0% - IBU 12 ; Good blonde ale with the perfect amount of blueberry - another great summer beer."
 	},
 	{
 		"placeId": ["ChIJEzZfDTEQzkwRTkC_7bo2uo4"],
@@ -103,7 +103,7 @@ const breweryRecommendations = [
 		"placeId": ["ChIJU3SVOTAQzkwRfOC9aKfdWB0"],
 		"name": "Dominion City Brewing Co.",
 		"icon": "dominion.png",
-		"recommendation": "Land Is Strong Wet-Hopped Belgian IPA ; ABV 8% - IBU 92 ; Drank the better part of a growler and went to see The Martian in 3D.  Thought I was going to be sick but held it together. Matt Damon is an American hero. 10/10, would do again."
+		"recommendation": "Land Is Strong Wet-Hopped Belgian IPA ; ABV 8% - IBU 92 ; Drank the better part of a growler and went to see The Martian in 3D.  Thought I was going to be sick but held it together. Matt Damon is an American hero. 10/10, would do again. Dominion is one of my top three breweries in Ottawa - the Sunsplit IPA and Earl Grey Marmalade Saison are also top-notch beers."
 	},
 	{
 		"placeId": ["ChIJLzcy5x3-zUwR2M9oJlmJGCg"],
@@ -148,8 +148,8 @@ const breweryRecommendations = [
 		"recommendation":  "Vanilla Porter ; ABV 5.0% - IBU 2.9 ; This is dessert for me.  One of my favourite widely available beers.  I can even buy this back home in Winnipeg now.  Not quite as good as the Double Trouble French Press Vanilla Stout (which is probably my favourite beer currently) but a pretty great alternative from a larger brewer."
 	},
 	{
-		"placeId": ["ChIJ3cLUzrYHzkwReNDGjZL4Dho"],
-		"name": "Nita Beer Company",
+		"placeId": ["ChIJ____orMHzkwRaxA1i9-KaQo"],
+		"name": "Nita Brewery",
 		"icon": "nita.png",
 		"recommendation": "Lone Wolf McAle - Ginger Spiced Ale ; ABV 5.5% - IBU 7.5 ; Really good ale.  There isn't any room for weak ginger flavour here - the taste of ginger is STRONG and I love it.  As a ginger myself, I can always appreciate a beer that lives up to the lofty title.  As an aside, the Nita mainstay 5 Fingers Brown Ale is also great."
 	},
@@ -175,7 +175,7 @@ const breweryRecommendations = [
 		"placeId": ["ChIJT_28uDgEzkwRHTRNezw9L9A"],
 		"name": "Tooth and Nail Brewing Company",
 		"icon": "toothandnail.png",
-		"recommendation": null
+		"recommendation": "Fortitude Stout ; ABV 5.4%; I put the stout here because I need to pick one beer as a recommendation but I could have put any of Tooth and Nail's beers here.  One of the best breweries in the city.  The Discretion Biere de Table is also fantastic."
 	},
 	{
 		"placeId": ["ChIJDUHDuzcEzkwRP4D-u9MaEIk"],
@@ -187,7 +187,7 @@ const breweryRecommendations = [
 		"placeId": ["ChIJKy7c6wMFzkwRgHunBsy0Mog"],
 		"name": "Waller Street Brewing",
 		"icon": "wallerst.png",
-		"recommendation": "Blind Baron Sour IPA ; ABV 6.5% - IBU ~90 ; Sour. Sour. Sourrrrrrrrr. This is the first any only sour beer I have had the pleasure of trying so I have absolutely no reference as to whether it is good or not. I enjoyed it but could not drink more than 1 at a time."
+		"recommendation": "Funky Beets Sour ; ABV 5.8% - IBU 12 ; A good summer sour perfect for someone like myself who hasn't explored the world of sour beers. The Funky Beets is not as intense as the Blind Baron IPA and was a great beer for a hot summer day."
 	},
 	{
 		"placeId": ["ChIJHagLgKIAzkwRlkpc-eHR2to"],

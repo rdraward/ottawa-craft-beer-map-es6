@@ -1,15 +1,16 @@
 import User from './components/User';
 import Brewery from './components/Brewery';
 import {
-    map,
-    placesService
+  map,
+  placesService
 } from './mapsApi/mapsService';
 import {
-    createLatLng,
-    limitMapScroll
+  createLatLng,
+  limitMapScroll
 } from './utils/bounds';
 import {
-    ottawaLatLong
+  beausLatLong,
+  ottawaLatLong
 } from './properties/map-props';
 import
   findNearestBrewery
@@ -33,6 +34,10 @@ export default class BrewMap {
             keyword: 'brewery',
             radius: '50000'
         }, this.populateMap.bind(this));
+
+        // Vankleek is too far to be captured by the places search
+        // so do one specifically for Beaus
+        this.addBeaus();
 
         // add personal location - GET ME TO CLOSEST BEER
         if (navigator.geolocation) {
@@ -68,6 +73,7 @@ export default class BrewMap {
 
                 if (breweryExtras) {
                     this.breweries.push(new Brewery(baseBreweryInfo[i], breweryExtras));
+                    this.breweries[this.breweries.length - 1].toggleBrewpubVisibility(!this.brewpubsHidden);
                 } else {
                     // remove extra results
                     baseBreweryInfo.splice(i, 1);
@@ -79,6 +85,17 @@ export default class BrewMap {
                 pagination.nextPage();
             }
         }
+    }
+
+    /*
+     * Add in Beau's Brewery
+     */
+    addBeaus() {
+      placesService.nearbySearch({
+          location: createLatLng(beausLatLong.lat, beausLatLong.lng),
+          keyword: 'brewery',
+          radius: '50000'
+      }, this.populateMap.bind(this));
     }
 
     /**
