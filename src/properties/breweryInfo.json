@@ -181,7 +181,7 @@ const breweryRecommendations = [
 		"placeId": ["ChIJDUHDuzcEzkwRP4D-u9MaEIk"],
 		"name": "Vimy Brewing Company",
 		"icon": "vimy.png",
-		"recommendation": null
+		"recommendation": "Vimy Red Ale ; ABV 5.0% - IBU 18 ; Went to Vimy with coworkers during a power outage. Thankfully we were invited in and served beer while it was still cold.  The Red Ale was my favourite of their mainstays and the ambiance of sitting in a relatively quiet brewery with Tragically Hip playing on an iPod was great - top notch service."
 	},
 	{
 		"placeId": ["ChIJKy7c6wMFzkwRgHunBsy0Mog"],
