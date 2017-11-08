@@ -6,3 +6,6 @@ Upcoming features:
 - better map boundary handling
 - out of sight brewery hints (ie arrow on corners of map)
 - take me to selected brewery feature
+- right slideout containing a list of available breweries and brew pubs
+  - can be filtered
+  - selecting a brewery will bring it into focus/selection on the map
