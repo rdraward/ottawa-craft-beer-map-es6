@@ -13,8 +13,10 @@ export default class Marker {
             icon: iconBase + icon,
             title: title
         });
+
         // mouseover icon brought to front
-        this.marker.addListener('mouseover', () => this.marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1));
+        this.marker.addListener('mouseover', () => this.marker.setZIndex(google.maps.Marker.MAX_ZINDEX));
+        this.marker.addListener('mouseout', () => this.marker.setZIndex(google.maps.Marker.MAX_ZINDEX - 1))
     }
 
     addCallback(type, action) {
@@ -22,6 +24,6 @@ export default class Marker {
     }
 
     getPosition() {
-      return this.marker.position;
+        return this.marker.position;
     }
 }

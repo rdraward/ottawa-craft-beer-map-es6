@@ -363,7 +363,10 @@
 	        });
 	        // mouseover icon brought to front
 	        this.marker.addListener('mouseover', function () {
-	            return _this.marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+	            return _this.marker.setZIndex(google.maps.Marker.MAX_ZINDEX);
+	        });
+	        this.marker.addListener('mouseout', function () {
+	            return _this.marker.setZIndex(google.maps.Marker.MAX_ZINDEX - 1);
 	        });
 	    }
 	
